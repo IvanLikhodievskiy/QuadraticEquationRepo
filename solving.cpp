@@ -1,6 +1,11 @@
 #include "solving.h"
 #include "isFloatAZero.h"
 
+double zero_correction(const double x)
+{
+	return (is_float_a_zero(x)) ? 0 : x;
+}
+
 Kinds_of_roots solve_linear(const double b, const double c, double* x)
 {
 	assert(x != nullptr);
@@ -13,6 +18,7 @@ Kinds_of_roots solve_linear(const double b, const double c, double* x)
 	}
 	else {
 		*x = -c / b;
+		*x = zero_correction(*x);
 		return ROOTS_SINGLE;
 	}
 }
@@ -32,10 +38,14 @@ Kinds_of_roots solve_quadratic(const double a, const double b, const double c, d
 			return ROOTS_ZERO;
 		if (is_float_a_zero(Discriminant)) {
 			*x1 = -b / (2 * a);
+			*x1 = zero_correction(*x1);
 			return ROOTS_SINGLE;
 		}
 		*x1 = (-b + sqrt(Discriminant)) / (2 * a);
+		*x1 = zero_correction(*x1);
 		*x2 = (-b - sqrt(Discriminant)) / (2 * a);
+		*x2 = zero_correction(*x2);
+
 		return ROOTS_TWO;
 	}
 }

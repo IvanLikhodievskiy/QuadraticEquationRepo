@@ -36,4 +36,6 @@ the given number of roots and asks whether you would like to start the program a
 
 void output_of_the_result(Kinds_of_roots number_of_roots, const double x1, const double x2, char* cond);
 
+void cleaning_buff();
+
 #endif

@@ -2,10 +2,21 @@
 #define _SINGLEUNITTEST_HEADER__
 
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include "isFloatAZero.h"
 #include "solving.h"
 
-void unit_test(Kinds_of_roots correct_number_of_roots, const double a, const double b, const double c, const double correct_x1, const double correct_x2, double* x1, double* x2, int* number);
+struct test_parameters {
+	Kinds_of_roots cor_num_of_roots;
+	const double first_coefficient;
+	const double second_coefficient;
+	const double third_coefficient;
+	const double first_root;
+	const double second_root;
+};
+
+bool unit_test(struct test_parameters t);
+
+void respond_to_error(struct test_parameters t, Kinds_of_roots number_of_roots, double x1, double x2);
 
 #endif

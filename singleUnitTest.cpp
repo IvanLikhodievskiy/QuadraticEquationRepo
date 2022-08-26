@@ -1,37 +1,45 @@
 #include "singleUnitTest.h"
 
-void unit_test(Kinds_of_roots correct_number_of_roots, const double a, const double b, const double c, const double correct_x1, const double correct_x2, double* x1, double* x2, int* number)
+void respond_to_error(struct test_parameters t, Kinds_of_roots number_of_roots, double x1, double x2)
 {
-	assert(x1     != nullptr);
-	assert(x2     != nullptr);
-	assert(number != nullptr);
-	assert(x1 != x2);
+	printf("FAILURE: coefficients  a = %lg, b  = %lg, c  = %lg\n", t.first_coefficient,
+		t.second_coefficient,t.third_coefficient);
+	printf("Correct: number of roots = %d, x1 = %lg, x2 = %lg\n", t.cor_num_of_roots,
+		t.first_root, t.second_root);
+	printf("Given:   number of roots = %d, x1 = %lg, x2 = %lg\n", number_of_roots, x1, x2);
+}
 
+bool unit_test (struct test_parameters t)    
+{
 	Kinds_of_roots number_of_roots = ROOTS_ERROR;
+	double x1 = NAN;
+	double x2 = NAN;
+	
+	number_of_roots = solve_quadratic(t.first_coefficient, t.second_coefficient, t.third_coefficient, &x1, &x2);
 
-	number_of_roots = solve_quadratic(a, b, c, x1, x2);
-
-	if ((correct_number_of_roots == ROOTS_ZERO and number_of_roots == ROOTS_ZERO) or (correct_number_of_roots == ROOTS_INF and number_of_roots == ROOTS_INF)) {
-		*number += 1;
+	if ((t.cor_num_of_roots == ROOTS_ZERO and number_of_roots == ROOTS_ZERO) 
+	or  (t.cor_num_of_roots == ROOTS_INF  and number_of_roots == ROOTS_INF)) {
+		return true;
 	}
-	else if (correct_number_of_roots == ROOTS_SINGLE and number_of_roots == ROOTS_SINGLE) {
-		if (is_float_a_zero((*x1) - correct_x1)) {
-			*number += 1;
+	else if (t.cor_num_of_roots == ROOTS_SINGLE and number_of_roots == ROOTS_SINGLE) {
+		if (is_float_a_zero(x1 - t.first_root)) {
+			return true;
 		}
 		else {
-			printf("FAILURE: coefficients a = %lg, b = %lg, c = %lg\n", a, b, c);
-			printf("Correct: number of roots = %d, x1 = %lg, x2 = %lg\n", correct_number_of_roots, correct_x1, correct_x2);
-			printf("Given: number of roots = %d, x1 = %lg, x2 = %lg\n", number_of_roots, x1, x2);
+			respond_to_error(t, number_of_roots, x1, x2);
+			return false;
 		}
 	}
-	else if (correct_number_of_roots == ROOTS_TWO and number_of_roots == ROOTS_TWO) {
-		if (is_float_a_zero((*x1) - correct_x1) and is_float_a_zero((*x2) - correct_x2)) {
-			*number += 1;
+	else if (t.cor_num_of_roots == ROOTS_TWO and number_of_roots == ROOTS_TWO) {
+		if (is_float_a_zero(x1 - t.first_root) and is_float_a_zero(x2 - t.second_root)) {
+			return true;
 		}
 		else {
-			printf("FAILURE: coefficients a = %lg, b = %lg, c = %lg\n", a, b, c);
-			printf("Correct: number of roots = %d, x1 = %lg, x2 = %lg\n", correct_number_of_roots, correct_x1, correct_x2);
-			printf("Given:   number of roots = %d, x1 = %lg, x2 = %lg\n", number_of_roots, x1, x2);
+			respond_to_error(t, number_of_roots, x1, x2);
+			return false;
 		}
+	}
+	else {
+		return true;
 	}
 }

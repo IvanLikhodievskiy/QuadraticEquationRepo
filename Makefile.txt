@@ -1,0 +1,27 @@
+CXXFLAGS = -Wall -Wextra -Wpedantic -Wfloat-equal -Wformat-overflow
+
+all: solution
+
+solution: main.o io.o isFloatAZero.o unitTests.o singleUnitTest.o solving.o
+	g++ $(CXXFLAGS) main.o io.o isFloatAZero.o unitTests.o singleUnitTest.o solving.o -o solution
+
+main.o: main.cpp
+	g++ $(CXXFLAGS) -c main.cpp
+
+io.o: io.cpp
+	g++ $(CXXFLAGS) -c io.cpp
+
+solving.o: solving.cpp
+	g++ $(CXXFLAGS) -c solving.cpp
+
+isFloatAZero.o: isFloatAZero.cpp
+	g++ $(CXXFLAGS) -c isFloatAZero.cpp
+
+unitTests.o: unitTests.cpp
+	g++ $(CXXFLAGS) -c unitTests.cpp
+
+singleUnitTest.o: singleUnitTest.cpp
+	g++ $(CXXFLAGS) -c singleUnitTest.cpp
+
+clean:
+	rm -rf *.o solution

@@ -58,4 +58,6 @@ x1 and x2 if the given equation has no roots
 */
 Kinds_of_roots solve_quadratic(const double a, const double b, const double c, double* x1, double* x2);
 
+double zero_correction(const double x);
+
 #endif
