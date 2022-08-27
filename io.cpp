@@ -41,6 +41,7 @@ void output_of_the_result(Kinds_of_roots number_of_roots, const double x1, const
 		case ROOTS_INF:
 			printf("Every real number is a root\n");
 			break;
+		case ROOTS_ERROR: [[fallthrough]];
 		default:
 			assert(0 && "Unexpected number of roots\n");
 	}

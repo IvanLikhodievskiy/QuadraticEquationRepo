@@ -22,7 +22,7 @@ int main(const int argc, const char *argv[])
 		printf("No command line arguments\n");
 	}
 	else {
-		if (STREQUAL(argv[1], "test"))
+		if (STREQUAL(argv[1], "-test"))
 			test();
 	}
 

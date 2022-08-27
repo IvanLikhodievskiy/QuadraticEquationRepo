@@ -1,6 +1,6 @@
 #include "singleUnitTest.h"
 
-void respond_to_error(struct test_parameters t, Kinds_of_roots number_of_roots, double x1, double x2)
+void respond_to_error(struct test_parameters t, Kinds_of_roots number_of_roots, const double x1, const double x2)
 {
 	printf("FAILURE: coefficients  a = %lg, b  = %lg, c  = %lg\n", t.first_coefficient,
 		t.second_coefficient,t.third_coefficient);
