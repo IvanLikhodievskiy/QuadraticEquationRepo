@@ -6,12 +6,18 @@
 #include "solving.h"
 
 /*!
+@brief Cleaning buffer for the correct input of the next elements
+*/
+
+void cleaning_buff();
+
+/*!
 @brief input_of_coefficients takes three coefficients (a, b and c)
 */
 
 /*!
 input_of_coefficients takes three coefficients (a, b and c), which are
-the coefficientsfor a quadratic equation a*x^2 + b*x + c = 0;
+the coefficientsfor a quadratic equation a*x^2 + b*x + c = 0
 */
 
 /*!
@@ -35,7 +41,5 @@ the given number of roots and asks whether you would like to start the program a
 */
 
 void output_of_the_result(Kinds_of_roots number_of_roots, const double x1, const double x2, char* cond);
-
-void cleaning_buff();
 
 #endif

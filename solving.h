@@ -27,7 +27,7 @@ enum Kinds_of_roots
 solve_linear takes two coefficients (b and c), which are the coefficients
 for a linear equation b*x + c = 0, returns the number its of roots and changes
 the value of the root x that should be initialized in the main program if the given
-equation has only one root;
+equation has only one root
 
 @param[in] b coefficient b for a linear equation
 @param[in] c coefficient c for a linear equation
@@ -57,6 +57,14 @@ x1 and x2 if the given equation has no roots
 @return the number of roots of the given linear equation or the notification about error
 */
 Kinds_of_roots solve_quadratic(const double a, const double b, const double c, double* x1, double* x2);
+
+/*!
+@brief Changes minus zero to zero
+
+@param[in] x the number the function compares with zero
+
+@return 0 if x is zero or minus zero, x in other cases
+*/
 
 double zero_correction(const double x);
 
