@@ -18,6 +18,12 @@ git clone https://github.com/IvanLikhodievskiy/QuadraticEquationRepo.git
 ```shell
 cd QuadraticEquationRepo
 ```
+```
+mkdir obj
+```
+```shell
+cd QuadraticEquationRepo
+```
 ```shell
 make
 ```
