@@ -34,4 +34,4 @@ solution test
 ```
 
 ## git clone
-[QuadraticEquationRepo](gh repo clone IvanLikhodievskiy/QuadraticEquationRepo)
+[QuadraticEquationRepo](https://github.com/IvanLikhodievskiy/QuadraticEquationRepo.git)
